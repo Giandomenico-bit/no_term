@@ -20,6 +20,7 @@ else :
     else :
         line = stream.readline() # lettura della riga del filename
         oldNumber = int( line )
+        stream.close()
 
         print( "valore corrente : ", oldNumber )
         newNumber = input( "Inserisci nuovo valore : " )
