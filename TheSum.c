@@ -28,6 +28,7 @@ int main( void ){
 
     stream = fopen( "sum.dat", "w" );
 
+    puts( "Tentativo di apertura file in scrittura..." )
     if( !stream ){
 
       puts( "Impossibile aprire il file..!\n" );
