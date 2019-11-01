@@ -9,6 +9,8 @@
 
 from os.path import isfile
 
+print( "Ricerca file in corso.." )
+
 if not isfile( "sum.dat" ) :
     print( "File inesistente" )
 else :
