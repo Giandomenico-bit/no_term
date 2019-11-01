@@ -9,7 +9,7 @@
 
 from os.path import isfile
 
-if isfile( "sum.dat" ) == 0 :
+if not isfile( "sum.dat" ) :
     print( "File inesistente" )
 else :
     print( "Lettura da file sum.dat..." )
