@@ -18,7 +18,7 @@ int main( void ){
 
   if( !stream ){
 
-    puts( "File non trovato..!\n" );
+    fprintf( stderr, "File non trovato..!\n" );
 
   } else {
 
@@ -28,10 +28,10 @@ int main( void ){
 
     stream = fopen( "sum.dat", "w" );
 
-    puts( "Tentativo di apertura file in scrittura..." )
+    puts( "Tentativo di apertura file in scrittura..." );
     if( !stream ){
 
-      puts( "Impossibile aprire il file..!\n" );
+      fprintf( stderr, "Impossibile aprire il file..!\n" );
 
     } else {
 
