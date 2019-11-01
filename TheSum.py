@@ -23,13 +23,17 @@ else :
         stream.close()
 
         print( "valore corrente : ", oldNumber )
-        newNumber = input( "Inserisci nuovo valore : " )
-        newNumber = int( newNumber )
-
-        sum = newNumber + oldNumber
-        print( "Nuovo valore : ", sum )
-
+        print( "Tentativo di apertura file in scrittura...")
         stream = open( "sum.dat", 'w' )
-        stream.write( str( sum ) )
 
-        stream.close()
+        if not stream :
+            print( "Impossibile aprire il file" )
+        else :
+            print( "Successo!" )
+            newNumber = input( "Inserisci nuovo valore : " )
+            newNumber = int( newNumber )
+            sum = newNumber + oldNumber
+            print( "Nuovo valore : ", sum )
+
+            stream.write( str( sum ) )
+            stream.close()
