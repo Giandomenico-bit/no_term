@@ -35,6 +35,7 @@ int main( void ){
 
     } else {
 
+      printf( "Successo!\n" );
       printf( "Inserisci valore da sommare : " );
       scanf( "%d", &value );
       puts( "" );
