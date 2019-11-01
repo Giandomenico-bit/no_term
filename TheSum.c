@@ -14,21 +14,30 @@ int main( void ){
   FILE* stream;
 
   puts( "Lettura dal file sum.dat in corso..." );
-
   stream = fopen( "sum.dat", "r" );
-  if( !stream ) puts( "File non trovato..!\n" );
-  else{
+
+  if( !stream ){
+
+    puts( "File non trovato..!\n" );
+
+  } else {
+
     fscanf( stream, "%d", &valueInFile );
     printf( "Valore corrente : %d\n\n", valueInFile );
-
-    printf( "Inserisci valore da sommare : " );
-    scanf( "%d", &value );
-    puts( "" );
     fclose( stream );
 
     stream = fopen( "sum.dat", "w" );
-    if( !stream ) puts( "Impossibile aprire il file..!\n" );
-    else{
+
+    if( !stream ){
+
+      puts( "Impossibile aprire il file..!\n" );
+
+    } else {
+
+      printf( "Inserisci valore da sommare : " );
+      scanf( "%d", &value );
+      puts( "" );
+
       sum = value + valueInFile;
       fprintf( stream, "%d", sum );
 
