@@ -11,25 +11,25 @@ int main( void ){
   int value;
   int valueInFile;
   int sum;
-  FILE* stream;
+  FILE* cfPtr;
 
   puts( "Lettura dal file sum.dat in corso..." );
-  stream = fopen( "sum.dat", "r" );
+  cfPtr = fopen( "sum.dat", "r" );
 
-  if( !stream ){
+  if( !cfPtr ){
 
     fprintf( stderr, "File non trovato..!\n" );
 
   } else {
 
-    fscanf( stream, "%d", &valueInFile );
+    fscanf( cfPtr, "%d", &valueInFile );
     printf( "Valore corrente : %d\n\n", valueInFile );
-    fclose( stream );
+    fclose( cfPtr );
 
-    stream = fopen( "sum.dat", "w" );
+    cfPtr = fopen( "sum.dat", "w" );
 
     puts( "Tentativo di apertura file in scrittura..." );
-    if( !stream ){
+    if( !cfPtr ){
 
       fprintf( stderr, "Impossibile aprire il file..!\n" );
 
@@ -41,11 +41,11 @@ int main( void ){
       puts( "" );
 
       sum = value + valueInFile;
-      fprintf( stream, "%d", sum );
+      fprintf( cfPtr, "%d", sum );
 
       printf( "Nuovo valore : %d\n", sum );
       printf( "Salvataggio nel file sum.dat in corso...\n" );
-      fclose( stream );
+      fclose( cfPtr );
     }
   }
 
