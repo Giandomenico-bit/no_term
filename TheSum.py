@@ -15,20 +15,20 @@ if not isfile( "sum.dat" ) :
     print( "File inesistente" )
 else :
     print( "Lettura da file sum.dat..." )
-    stream = open( "sum.dat", 'r' )
+    fileDes = open( "sum.dat", 'r' )
 
-    if not stream :
+    if not fileDes :
         print( "Impossibile aprire il file" )
     else :
         line = stream.readline() # lettura della riga del filename
         oldNumber = int( line )
-        stream.close()
+        fileDes.close()
 
         print( "valore corrente : ", oldNumber )
         print( "Tentativo di apertura file in scrittura...")
-        stream = open( "sum.dat", 'w' )
+        fileDes = open( "sum.dat", 'w' )
 
-        if not stream :
+        if not fileDes :
             print( "Impossibile aprire il file" )
         else :
             print( "Successo!" )
@@ -37,5 +37,5 @@ else :
             sum = newNumber + oldNumber
             print( "Nuovo valore : ", sum )
 
-            stream.write( str( sum ) )
-            stream.close()
+            fileDes.write( str( sum ) )
+            fileDes.close()
