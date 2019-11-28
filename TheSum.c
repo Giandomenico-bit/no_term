@@ -9,7 +9,7 @@ il file sum.dat non esista. */
 int main( void ){
 
   int value;
-  int valueInFile;
+  int valueInFile = 0;
   int sum;
   FILE* cfPtr;
 
