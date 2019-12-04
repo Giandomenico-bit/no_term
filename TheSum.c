@@ -10,7 +10,7 @@ int main( void ){
 
   int value;
   int valueInFile = 0;
-  int sum;
+  int sum = 0;
   FILE* cfPtr;
 
   puts( "Lettura dal file sum.dat in corso..." );
@@ -19,35 +19,27 @@ int main( void ){
   if( !cfPtr ){
 
     fprintf( stderr, "File non trovato..!\n" );
+    puts( "Creazione del file..." );
 
   } else {
 
     fscanf( cfPtr, "%d", &valueInFile );
     printf( "Valore corrente : %d\n\n", valueInFile );
     fclose( cfPtr );
-
-    cfPtr = fopen( "sum.dat", "w" );
-
-    puts( "Tentativo di apertura file in scrittura..." );
-    if( !cfPtr ){
-
-      fprintf( stderr, "Impossibile aprire il file..!\n" );
-
-    } else {
-
-      printf( "Successo!\n" );
-      printf( "Inserisci valore da sommare : " );
-      scanf( "%d", &value );
-      puts( "" );
-
-      sum = value + valueInFile;
-      fprintf( cfPtr, "%d", sum );
-
-      printf( "Nuovo valore : %d\n", sum );
-      printf( "Salvataggio nel file sum.dat in corso...\n" );
-      fclose( cfPtr );
-    }
   }
+
+  printf( "Inserisci valore da sommare : " );
+  scanf( "%d", &value );
+  puts( "" );
+
+  sum = value + valueInFile;
+
+  printf( "Nuovo valore : %d\n", sum );
+  printf( "Salvataggio nel file sum.dat in corso...\n" );
+
+  cfPtr = fopen( "sum.dat", "w" );
+  fprintf( cfPtr, "%d", sum );
+  fclose( cfPtr );
 
   return 0;
 }
