@@ -1,3 +1,4 @@
+
 # Si scriva un programma Python che, dopo aver chiesto all'utente
 # di inserire un numero intero da tastiera, lo sommi ad un altro
 # intero letto da un file di testo sum.dat. Infine aggiorni il
@@ -10,32 +11,25 @@
 from os.path import isfile
 
 print( "Ricerca file in corso.." )
+sum = 0
 
 if not isfile( "sum.dat" ) :
     print( "File inesistente" )
+    print( "Creazione del file..." )
 else :
     print( "Lettura da file sum.dat..." )
     fileDes = open( "sum.dat", 'r' )
 
-    if not fileDes :
-        print( "Impossibile aprire il file" )
-    else :
-        line = stream.readline() # lettura della riga del filename
-        oldNumber = int( line )
-        fileDes.close()
+    line = fileDes.readline() # lettura della riga del filename
+    sum = int( line )
+    fileDes.close()
 
-        print( "valore corrente : ", oldNumber )
-        print( "Tentativo di apertura file in scrittura...")
-        fileDes = open( "sum.dat", 'w' )
+print( "valore corrente : ", sum )
+newNumber = input( "Inserisci nuovo valore : " )
+newNumber = int( newNumber )
+sum = sum + newNumber
+print( "Nuovo valore : ", sum )
 
-        if not fileDes :
-            print( "Impossibile aprire il file" )
-        else :
-            print( "Successo!" )
-            newNumber = input( "Inserisci nuovo valore : " )
-            newNumber = int( newNumber )
-            sum = newNumber + oldNumber
-            print( "Nuovo valore : ", sum )
-
-            fileDes.write( str( sum ) )
-            fileDes.close()
+fileDes = open( "sum.dat", 'w' )
+fileDes.write( str( sum ) )
+fileDes.close()
