@@ -8,38 +8,35 @@ il file sum.dat non esista. */
 
 int main( void ){
 
-  int value;
-  int valueInFile = 0;
-  int sum = 0;
-  FILE* cfPtr;
+  int valore1, valore2, somma;
+  FILE* fPunt;
 
-  puts( "Lettura dal file sum.dat in corso..." );
-  cfPtr = fopen( "sum.dat", "r" );
+  valore2 = 0; // se il file non esiste il valore attuale e' per ipotesi 0
+  somma = 0;
 
-  if( !cfPtr ){
+  printf( "%s\n", "Lettura dal file sum.dat in corso..." );
+  fPunt = fopen( "sum.dat", "r" );
 
+  if( fPunt == NULL )
     fprintf( stderr, "File non trovato..!\n" );
-    puts( "Creazione del file..." );
-
-  } else {
-
-    fscanf( cfPtr, "%d", &valueInFile );
-    printf( "Valore corrente : %d\n\n", valueInFile );
-    fclose( cfPtr );
+  else {
+    fscanf( fPunt, "%d", &valore2 );
+    printf( "Valore corrente : %d\n\n", valore2 );
+    fclose( fPunt );
   }
 
-  printf( "Inserisci valore da sommare : " );
-  scanf( "%d", &value );
-  puts( "" );
+  printf( "%s", "Inserisci valore da sommare : " );
+  scanf( "%d", &valore1 );
 
-  sum = value + valueInFile;
+  somma = valore1 + valore2;
 
-  printf( "Nuovo valore : %d\n", sum );
-  printf( "Salvataggio nel file sum.dat in corso...\n" );
+  printf( "Nuovo valore : %d\n\n", somma );
 
-  cfPtr = fopen( "sum.dat", "w" );
-  fprintf( cfPtr, "%d", sum );
-  fclose( cfPtr );
+  fPunt = fopen( "sum.dat", "w" );
+  printf( "%s\n", "Salvataggio nel file sum.dat in corso..." );
+
+  fprintf( fPunt, "%d", somma );
+  fclose( fPunt );
 
   return 0;
 }
